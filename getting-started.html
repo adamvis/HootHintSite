@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting Started — HootHint</title>
+<meta name="description" content="Step-by-step: install HootHint, get a free Gemini key, and run your first capture.">
+<link rel="icon" href="assets/favicon-32.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo-192.png" alt=""> HootHint</a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="getting-started.html" aria-current="page">Getting Started</a>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="changelog.html">Changelog</a>
+      <a class="btn btn-accent" href="https://github.com/adamvis/HootHintSite/releases/latest/download/HootHint-Setup.exe">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <article>
+      <h1>Getting Started</h1>
+      <p class="subtitle">From download to your first answer, in about five minutes.</p>
+
+      <ol class="steps">
+        <li>
+          <h3>Download and run the installer</h3>
+          <p>
+            <a href="https://github.com/adamvis/HootHintSite/releases/latest/download/HootHint-Setup.exe">Download HootHint-Setup.exe</a>
+            and run it. It installs to your own user folder — no admin rights needed.
+            Pick a Start Menu / desktop shortcut if you'd like one, then finish the wizard.
+          </p>
+          <div class="callout">
+            <p>
+              Windows may show a blue "Windows protected your PC" SmartScreen
+              screen the first time, since this isn't signed by a paid
+              certificate authority. Click <strong>More info → Run anyway</strong>.
+              See the <a href="faq.html#smartscreen">FAQ</a> for why this
+              happens and how to confirm the download is legitimate.
+            </p>
+          </div>
+        </li>
+        <li>
+          <h3>Get a free Gemini API key</h3>
+          <p>
+            HootHint answers questions using Google's Gemini API — with
+            <strong>your own</strong> key, not one built into the app. Go to
+            <a href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a>,
+            sign in with a Google account, and create a key. It's free, and
+            takes under a minute.
+          </p>
+        </li>
+        <li>
+          <h3>Launch HootHint and finish setup</h3>
+          <p>
+            On first launch, a small setup window asks for that Gemini key —
+            paste it in. Notifications default to an on-screen popup, so you
+            can stop here and press Start.
+          </p>
+          <p>
+            Want alerts on your phone instead (or as well)? Message
+            <a href="https://t.me/BotFather">@BotFather</a> on Telegram, send
+            <code>/newbot</code>, and paste the token it gives you into the
+            bot token field — then click <strong>Link via QR…</strong> and
+            scan the code with your phone's Telegram app. A shared default
+            bot also works with no setup at all, for a quick try — see the
+            <a href="faq.html#own-bot">FAQ</a> for the trade-off.
+          </p>
+        </li>
+        <li>
+          <h3>Choose your timing and subject</h3>
+          <p>
+            The main setup window lets you set how often HootHint captures
+            the screen, how many recent captures it remembers (useful if a
+            question spans a scroll), and a subject hint to help Gemini
+            interpret what it sees. Defaults are sensible — just click
+            <strong>Start</strong> if you're not sure.
+          </p>
+        </li>
+        <li>
+          <h3>Drag to select a region</h3>
+          <p>
+            Your screen dims; click and drag a rectangle around the area you
+            want watched. HootHint then starts capturing that region on its
+            own, and minimizes to a tray icon (near the clock, under the
+            "^" arrow).
+          </p>
+        </li>
+        <li>
+          <h3>Watch for answers — and stop any time</h3>
+          <p>
+            Answers appear as a popup in the bottom-right corner, or as a
+            Telegram message, depending on what you chose. To stop, right-click
+            the tray icon and choose <strong>Stop</strong>, press Ctrl+C in
+            the console (if visible), or send <code>/stop</code> on Telegram.
+          </p>
+        </li>
+      </ol>
+    </article>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 HootHint. Freeware — see <a href="LICENSE.txt">license</a>.</span>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="faq.html">FAQ</a>
+      <a href="https://github.com/adamvis/HootHintSite/issues">Report an issue</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

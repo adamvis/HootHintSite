@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — HootHint</title>
+<meta name="description" content="Frequently asked questions about HootHint: cost, setup, Telegram, SmartScreen warnings, and rate limits.">
+<link rel="icon" href="assets/favicon-32.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo-192.png" alt=""> HootHint</a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="faq.html" aria-current="page">FAQ</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="changelog.html">Changelog</a>
+      <a class="btn btn-accent" href="https://github.com/adamvis/HootHintSite/releases/latest/download/HootHint-Setup.exe">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <article>
+      <h1>FAQ</h1>
+      <p class="subtitle">Common questions about setup, cost, and how HootHint behaves.</p>
+
+      <h2>General</h2>
+
+      <div class="faq-item">
+        <h3>Is HootHint free?</h3>
+        <p>
+          Yes — HootHint itself is free to use. You'll bring your own free
+          Google Gemini API key (see <a href="getting-started.html">Getting
+          Started</a>), which has its own no-cost tier with a request-per-minute
+          limit. HootHint doesn't charge anything on top of that, and never
+          sees your key — it's stored only in a local <code>.env</code> file
+          on your own machine.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Do I need to know how to code?</h3>
+        <p>No. Download the installer, run it, and follow the setup window — no terminal or config files required.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What Windows versions are supported?</h3>
+        <p>Windows 10 and 11. HootHint isn't tested on other platforms.</p>
+      </div>
+
+      <h2>Setup</h2>
+
+      <div class="faq-item" id="smartscreen">
+        <h3>Why does Windows show a "Windows protected your PC" warning?</h3>
+        <p>
+          That's Microsoft SmartScreen's "unrecognized publisher" warning —
+          it appears for any app not signed with a paid certificate (which
+          costs real money per year to maintain), regardless of whether the
+          app is safe. Click <strong>More info → Run anyway</strong> to
+          continue. If you'd rather verify first, compare the download
+          against the file listed on the
+          <a href="https://github.com/adamvis/HootHintSite/releases/latest">official Releases page</a>.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>My antivirus flagged the installer or the app — is that expected?</h3>
+        <p>
+          It can happen with any small, freshly-built, unsigned Windows app —
+          heuristic scanners are more suspicious of binaries with no
+          track record. Check Windows Security → Virus &amp; threat
+          protection → Protection history for details on what was flagged.
+          If you'd rather sidestep this entirely, you can run HootHint from
+          source instead (see the source repository) — that never produces
+          a standalone binary at all.
+        </p>
+      </div>
+
+      <div class="faq-item" id="own-bot">
+        <h3>Do I need my own Telegram bot?</h3>
+        <p>
+          Not strictly — a shared default bot works out of the box for
+          on-screen popup notifications, and for Telegram too if you'd
+          rather not set anything up. But Telegram's <code>/stop</code>
+          command and QR-code linking rely on a single update queue
+          per bot; if many people use the shared bot at the same time, one
+          person's poll can occasionally consume an update meant for someone
+          else, causing a missed <code>/stop</code> or QR link. Creating your
+          own bot (via <a href="https://t.me/BotFather">@BotFather</a>,
+          <code>/newbot</code> — under a minute) avoids this entirely, since
+          it's the only thing polling it. It's offered as an option in the
+          setup window, not a requirement.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Do I need my own Gemini API key, or is one built in?</h3>
+        <p>
+          You need your own — HootHint doesn't ship with (or have access to)
+          anyone else's key. This keeps your usage, quota, and any costs
+          entirely separate from every other HootHint user. Get one free at
+          <a href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a>.
+        </p>
+      </div>
+
+      <h2>Using it</h2>
+
+      <div class="faq-item">
+        <h3>I'm getting rate-limit errors — what now?</h3>
+        <p>
+          The free Gemini tier has a per-minute request cap that varies by
+          account and model — sometimes as low as 5 requests/minute. Raise
+          the "time between screenshots" value in the setup window, or check
+          your actual quota at
+          <a href="https://aistudio.google.com/rate-limit">aistudio.google.com/rate-limit</a>.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How do I stop a run?</h3>
+        <p>
+          Right-click the tray icon (near the clock, under the "^" arrow) and
+          choose <strong>Stop</strong>, press Ctrl+C in the console window if
+          it's visible, or send <code>/stop</code> from your linked Telegram
+          account.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What data does HootHint send anywhere?</h3>
+        <p>
+          Only the screenshots of the region you selected — sent to Google's
+          Gemini API (with your key) and, if you've set it up, to Telegram.
+          See the full <a href="privacy.html">Privacy page</a> for details.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Where do I report a bug or ask something not covered here?</h3>
+        <p>
+          Open an issue on the
+          <a href="https://github.com/adamvis/HootHintSite/issues">HootHint issue tracker</a>.
+        </p>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 HootHint. Freeware — see <a href="LICENSE.txt">license</a>.</span>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="faq.html">FAQ</a>
+      <a href="https://github.com/adamvis/HootHintSite/issues">Report an issue</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+HootHint — Freeware License
+
+Copyright (c) 2026 Adam Viscusi. All rights reserved.
+
+This software ("HootHint") is provided free of charge for personal,
+non-commercial use.
+
+1. Grant of use. You may install and run HootHint on your own devices,
+   free of charge, for as long as you like.
+
+2. No redistribution. You may not redistribute, re-host, sell, rent, or
+   otherwise make HootHint (in whole or in part, modified or unmodified)
+   available to others. If you'd like someone else to have it, point them
+   to the official download instead.
+
+3. No reverse engineering. You may not decompile, disassemble, or reverse
+   engineer HootHint, except to the extent applicable law prohibits this
+   restriction.
+
+4. Third-party services. HootHint sends the images you capture to the
+   Google Gemini API using your own API key, and (optionally) sends
+   messages via the Telegram Bot API. Your use of those services is
+   governed by Google's and Telegram's own terms and privacy policies,
+   not this license — review those separately.
+
+5. Your responsibility. You are solely responsible for using HootHint in
+   a way that complies with any rules, policies, or agreements that apply
+   to you (for example, an employer's or school's acceptable-use or
+   academic-integrity policy). The author is not responsible for how you
+   choose to use this software.
+
+6. No warranty. HootHint is provided "AS IS", without warranty of any
+   kind, express or implied, including but not limited to warranties of
+   merchantability, fitness for a particular purpose, and
+   non-infringement. In no event shall the author be liable for any
+   claim, damages, or other liability arising from, out of, or in
+   connection with the software or its use.
+
+7. Termination. This license terminates automatically if you violate any
+   of the terms above. Upon termination, you must stop using and delete
+   all copies of HootHint in your possession.

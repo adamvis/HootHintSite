@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — HootHint</title>
+<meta name="description" content="What HootHint captures, where it goes, and what stays on your own device.">
+<link rel="icon" href="assets/favicon-32.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo-192.png" alt=""> HootHint</a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html" aria-current="page">Privacy</a>
+      <a href="changelog.html">Changelog</a>
+      <a class="btn btn-accent" href="https://github.com/adamvis/HootHintSite/releases/latest/download/HootHint-Setup.exe">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <article>
+      <h1>Privacy</h1>
+      <p class="subtitle">
+        HootHint has no servers of its own. Everything below is the complete
+        list of where your data goes.
+      </p>
+
+      <h2>What's captured</h2>
+      <p>
+        Only the screen region you drag-select when a run starts. HootHint
+        never captures your full screen, other windows, or anything outside
+        that region, and never captures anything before you've selected a
+        region and clicked Start.
+      </p>
+
+      <h2>Where it goes</h2>
+
+      <h3>Google Gemini API</h3>
+      <p>
+        Each captured image is sent to Google's Gemini API, using
+        <strong>your own</strong> API key — never a key belonging to
+        HootHint or any other user. That request is subject to Google's own
+        terms and privacy policy, not HootHint's. In particular, Google's
+        free tier allows using submitted content to improve their products,
+        unlike their paid tier — review
+        <a href="https://ai.google.dev/gemini-api/terms">Gemini API's terms</a>
+        if that matters for what you're capturing.
+      </p>
+
+      <h3>Telegram (optional)</h3>
+      <p>
+        If you've configured Telegram notifications, the same captured
+        images and the answer text are also sent via the Telegram Bot API to
+        the chat you linked. This only happens if you've set up Telegram —
+        it's off by default in favor of the on-screen popup. Subject to
+        <a href="https://telegram.org/privacy">Telegram's own privacy policy</a>.
+      </p>
+
+      <h2>What stays on your device</h2>
+      <p>
+        Captured images are also written to a local <code>snapshots</code>
+        folder next to the app, purely as working storage for the run in
+        progress — HootHint deletes each one once it's no longer needed to
+        answer the current question. Your Gemini key and Telegram
+        credentials are stored only in a local <code>.env</code> file next
+        to the app; nothing is uploaded to any HootHint-operated service,
+        because there isn't one.
+      </p>
+
+      <h2>What HootHint's developer sees</h2>
+      <p>
+        Nothing. There's no telemetry, analytics, crash reporting, or
+        phone-home behavior of any kind built into the app. The only outside
+        parties involved are Google (via your key) and, optionally, Telegram
+        — both described above.
+      </p>
+
+      <div class="callout">
+        <p>
+          You're responsible for using HootHint in a way that complies with
+          any rules that apply to you — see the
+          <a href="LICENSE.txt">license</a> for the full terms.
+        </p>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 HootHint. Freeware — see <a href="LICENSE.txt">license</a>.</span>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="faq.html">FAQ</a>
+      <a href="https://github.com/adamvis/HootHintSite/issues">Report an issue</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
