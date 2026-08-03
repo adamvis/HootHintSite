@@ -31,6 +31,36 @@
       <p class="subtitle">See the <a href="https://github.com/adamvis/HootHintSite/releases">Releases page</a> for downloadable installers of every version.</p>
 
       <!-- LATEST_RELEASE -->
+      <h2>v0.0.2-beta — 2026-08-03</h2>
+      <p>`.env`/`usage_stats.json`/`snapshots\` from what gets packaged,</p>
+      <p>regardless of what&#x27;s sitting in the build folder at build time.</p>
+      <p>creating your own bot (a ❓ next to the option explains how).</p>
+      <p>picker remains.</p>
+      <p>latest release, downloads).</p>
+      <p>ship it by default), which had been failing every test run since the</p>
+      <p>suite was added.</p>
+      <p>actually called, since merely *importing* pystray&#x27;s X11 backend on</p>
+      <p>Linux opens a real display connection as a side effect — crashing</p>
+      <p>headless (no-display) test collection outright, not just anything</p>
+      <p>that opens a window. No effect on Windows, where this app runs.</p>
+      <p>during release builds — the installer no longer ships unsigned, and</p>
+      <p>Windows SmartScreen&#x27;s &quot;unrecognized publisher&quot; warning should stop</p>
+      <p>appearing once the certificate&#x27;s reputation builds up.</p>
+      <p>Windows&#x27; Python defaults to the legacy cp1252 codepage, which can&#x27;t</p>
+      <p>encode the emoji CHANGELOG.md entries use, crashing the release build</p>
+      <p>the moment one showed up in an [Unreleased] entry.</p>
+      <ul>
+        <li>Fix a potential API-key leak: the installer now explicitly excludes</li>
+        <li>Default notifications to the on-screen popup instead of Telegram.</li>
+        <li>Remove the shared default Telegram bot — Telegram now requires</li>
+        <li>Remove the Debug and Mock answer-source options — only the model</li>
+        <li>Give the README a logo and status badges (tests, release, coverage,</li>
+        <li>Fix CI: install `python3-tk` on the test runner (ubuntu-latest doesn&#x27;t</li>
+        <li>Fix CI: defer pystray/PIL&#x27;s import in tray_icon.py until `start()` is</li>
+        <li>Sign the app and installer `.exe` with a real SSL.com certificate</li>
+        <li>Fix CI: `release_changelog.py` now forces UTF-8 on stdout/stderr —</li>
+      </ul>
+
       <h2>v0.0.1-beta — 2026-08-02</h2>
       <ul>
         <li>Initial public beta release.</li>
