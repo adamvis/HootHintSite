@@ -31,6 +31,166 @@
       <p class="subtitle">See the <a href="https://github.com/adamvis/HootHintSite/releases">Releases page</a> for downloadable installers of every version.</p>
 
       <!-- LATEST_RELEASE -->
+      <h2>v0.0.3-beta — 2026-08-04</h2>
+      <p>could survive an uninstall and reappear on reinstall into the same</p>
+      <p>folder — not a packaging leak, just a missed cleanup).</p>
+      <p>2x2 card layout (Timing/Question on top, Notifications/Model below)</p>
+      <p>instead of four cramped ttk columns in a single row. First dialog of</p>
+      <p>several moving off plain ttk (see theme.py); the rest (first-run setup,</p>
+      <p>QR linking, the tray icon&#x27;s Status dialog, the popup notifier) are</p>
+      <p>still the old style for now.</p>
+      <p>owl logo (a known customtkinter bug — iconphoto(True, ...) silently</p>
+      <p>gets overridden on Windows; works around it the documented way) and</p>
+      <p>fix a potential crash setting it at all (the source PNG is 3102x3012,</p>
+      <p>way past what some X servers/compat layers accept for a titlebar</p>
+      <p>icon — now resized first). Header now shows the real logo image</p>
+      <p>instead of the 🦉 emoji, and is properly centered. Bigger, more</p>
+      <p>rounded, more consistent buttons throughout the setup dialog.</p>
+      <p>(e.g. &quot;for questions split across a scroll&quot;) are now a small &quot;?&quot;</p>
+      <p>badge next to the relevant field instead, showing the same detail in</p>
+      <p>a hover tooltip. Cards take noticeably less vertical room with the</p>
+      <p>same information still one hover away.</p>
+      <p>setup) up to the same customtkinter card/tooltip/button language as</p>
+      <p>the setup dialog — the second-most-visited screen in the app was</p>
+      <p>still plain ttk and looked a full generation behind it.</p>
+      <p>fill) with the real logo behind a soft gold glow — echoing the logo</p>
+      <p>artwork&#x27;s own glowing question mark, which the app&#x27;s palette otherwise</p>
+      <p>barely used — replaces the plain emoji glyph, and is properly centered.</p>
+      <p>One shared implementation (`theme.gradient_header()`) now used by every</p>
+      <p>dialog, ttk or customtkinter alike, replacing the old separate</p>
+      <p>`header()`/`ctk_header()` pair.</p>
+      <p>border) and a small colored circular icon badge instead of a flat</p>
+      <p>icon+text heading, alternating accent/teal per card for a bit of</p>
+      <p>deliberate color rhythm across the grid.</p>
+      <p>frequently seen screen in the app, previously the only one with no</p>
+      <p>theming applied at all. Same gradient header treatment as everywhere</p>
+      <p>else, at a smaller scale to fit its compact fixed-size window.</p>
+      <p>expression`) in the new card-shadow code: `tkinter.Canvas` overrides</p>
+      <p>both `.lower()` and `.lift()`/`.tkraise()` to mean canvas-*item*</p>
+      <p>stacking (aliases for `tag_lower`/`tag_raise`), not widget stacking —</p>
+      <p>calling either on a `Canvas` instance to reorder it against a sibling</p>
+      <p>*widget* tries to parse that widget as a canvas tag search expression</p>
+      <p>instead. Raise the card itself (a plain `CTkFrame`, unaffected by the</p>
+      <p>override) above the shadow instead of lowering the shadow canvas below</p>
+      <p>the card.</p>
+      <p>left edge, the title independently centered across the full header</p>
+      <p>width, and the gear button pinned to the right — instead of all three</p>
+      <p>being centered together as one block, which read as off-center once</p>
+      <p>the gear button&#x27;s reserved space was accounted for. Drop the header</p>
+      <p>subtitle line entirely (every dialog just shows &quot;HootHint&quot; now).</p>
+      <p>than the gear button sits from the right, despite both using the same</p>
+      <p>margin: the logo&#x27;s glow effect pads its image well past the visible</p>
+      <p>owl artwork (room for the blur to not get clipped), and that padding</p>
+      <p>was being centered at the margin instead of the artwork itself. Now</p>
+      <p>centers on the actual artwork size, so both edges line up.</p>
+      <p>anti-aliases its own rounded corners against a `bg_color` it&#x27;s told to</p>
+      <p>assume is behind it, and that was defaulting to the header canvas&#x27;s</p>
+      <p>flat fallback color rather than the actual gradient pixel behind the</p>
+      <p>button — now sampled fresh from the gradient on every redraw so the</p>
+      <p>corners blend cleanly regardless of where the button lands.</p>
+      <p>text instead of near-black — better contrast against the blue accent</p>
+      <p>fill, and matches the already-white gear/QR button text.</p>
+      <p>the tray icon&#x27;s Status dialog) — they were forcing themselves above</p>
+      <p>every other window, which fought with actually using the app alongside</p>
+      <p>whatever it&#x27;s meant to help with. Dialogs stay fixed-size</p>
+      <p>(resizable(False, False)) rather than becoming resizable: the card</p>
+      <p>grid&#x27;s fixed-width entries/comboboxes don&#x27;t reflow with the window, so</p>
+      <p>resizing would just add dead space or clip content rather than</p>
+      <p>actually helping.</p>
+      <p>technically symmetric already but still read as cramped, especially</p>
+      <p>the gear tucked right up against the corner below the window&#x27;s own</p>
+      <p>minimize/close buttons.</p>
+      <p>&amp; Model&quot; — Subject/Force MCQ next to the model picker was really one</p>
+      <p>decision, not two), freeing a slot in the 2x2 grid for a new Capture</p>
+      <p>Region card with its own &quot;Select capture region…&quot; button. Region</p>
+      <p>selection used to only happen as a separate full-screen drag *after*</p>
+      <p>closing this whole dialog; now it&#x27;s done from here, re-selectable any</p>
+      <p>time before Start, and Start refuses to proceed without a region</p>
+      <p>picked — one action commits the whole run instead of dropping into a</p>
+      <p>disconnected next step once the dialog&#x27;s already gone.</p>
+      <p>its margin promised, even after two rounds of margin math: customtkinter</p>
+      <p>scales widget pixel sizes (width/height/corner_radius) by the system&#x27;s</p>
+      <p>detected display-scaling factor before actually rendering them, so on a</p>
+      <p>scaled Windows display a `width=40` button renders wider than the</p>
+      <p>literal 40px our own layout math assumed — quietly eating into the</p>
+      <p>margin by however much that scale factor is. Now measures the button&#x27;s</p>
+      <p>real rendered width after creating it and repositions using that,</p>
+      <p>instead of a fixed assumption.</p>
+      <p>script)` console errors after the Setup dialog closes (customtkinter&#x27;s</p>
+      <p>own internal timers -- a DPI-scaling poll, button hover/click animation</p>
+      <p>-- staying scheduled past `root.destroy()`), by cancelling every</p>
+      <p>pending `after` job in that interpreter first. Reverted: on a real</p>
+      <p>Windows run this turned the original harmless console noise into a hard</p>
+      <p>crash on Start instead (`TclError: can&#x27;t delete Tcl command`) —</p>
+      <p>`Misc.after_cancel()` doesn&#x27;t just cancel the timer, it also deletes the</p>
+      <p>Tcl command backing that job&#x27;s callback, and doing that indiscriminately</p>
+      <p>for every pending job left some CTk widget&#x27;s own destroy() trying to</p>
+      <p>delete a command that was already gone. Back to a plain `root.destroy()`</p>
+      <p>— the cosmetic console noise is a much smaller problem than a crash.</p>
+      <p>match the selected region&#x27;s width/height exactly, which would mean the</p>
+      <p>screenshot doesn&#x27;t show what was dragged — most likely from a Windows</p>
+      <p>display-scaling mismatch. Diagnostic only, doesn&#x27;t change what gets</p>
+      <p>captured; there&#x27;s no way to reproduce or confirm actual scaled-display</p>
+      <p>behavior without a real Windows machine to check it on.</p>
+      <p>radio options (&quot;On-screen popup&quot;/&quot;Telegram (mobile)&quot;) now sit side by</p>
+      <p>side instead of stacked, and Force MCQ now sits beside the Subject</p>
+      <p>field instead of on its own row below it — one fewer row in each card,</p>
+      <p>no loss of information. Reworded the Timing card&#x27;s field labels to say</p>
+      <p>what each one actually *does* rather than the internal term for it</p>
+      <p>(e.g. &quot;Wait if question isn&#x27;t ready&quot; instead of &quot;Wait after</p>
+      <p>\&quot;problem\&quot;&quot;, with a tooltip explaining when that kicks in), and</p>
+      <p>dropped the &quot;(s)&quot; unit tag from them — the Timing card&#x27;s own heading</p>
+      <p>and the plain numeric entries already make that obvious enough not to</p>
+      <p>repeat on every line.</p>
+      <p>Tk&#x27;s generic default icon in the taskbar instead of the owl logo:</p>
+      <p>`theme.set_window_icon()` was only ever being called on the Setup and</p>
+      <p>Configuration dialogs&#x27; own roots, not on the tray icon&#x27;s hidden root or</p>
+      <p>either of these Toplevels, so they fell back to whatever Tk&#x27;s default</p>
+      <p>happens to be.</p>
+      <p>`set_window_icon()` was already being called: Windows identifies/groups</p>
+      <p>taskbar buttons by a process&#x27;s AppUserModelID, separate from whatever</p>
+      <p>`iconphoto()`/`wm_iconbitmap()` set on the window itself — left at its</p>
+      <p>default, every `uv run`/plain `python` invocation shares `python.exe`&#x27;s</p>
+      <p>own AppUserModelID (and, for taskbar purposes, effectively its icon</p>
+      <p>too). `main.py` now sets its own explicit one before creating any</p>
+      <p>window, same timing as the existing DPI-awareness call. No effect once</p>
+      <p>frozen into its own `.exe` (already a distinct process with its own</p>
+      <p>icon resource), but harmless to still call either way.</p>
+      <p>self-signed code-signing certificate, then trust it) so `build.bat`</p>
+      <p>produces a signed test `.exe`/installer without touching the paid CI</p>
+      <p>signing setup or its quota at all — useful for testing the actual</p>
+      <p>packaged build (including what a signed one looks like) between real</p>
+      <p>releases. `build.bat` already produced a fully working *unsigned* build</p>
+      <p>with zero setup if you don&#x27;t need that; this is only for the signed</p>
+      <p>case. Renamed the placeholder certificate subject this and `sign.ps1`</p>
+      <p>default to (`CN=MLOps`, a leftover from an unrelated project) to</p>
+      <p>`CN=HootHintTest`.</p>
+      <ul>
+        <li>Fix the installer&#x27;s uninstaller to also remove `.env` (a real API key</li>
+        <li>Redesign the main setup dialog with customtkinter — a proper rounded</li>
+        <li>Fix the window/taskbar icon showing a generic default instead of the</li>
+        <li>Shrink the setup dialog: five always-visible explanatory text blocks</li>
+        <li>Bring the Configuration dialog (gear icon — Gemini key &amp; Telegram</li>
+        <li>Redesign every dialog&#x27;s header: a diagonal gradient (instead of a flat</li>
+        <li>Give cards a real soft drop shadow (actual elevation, not just a 1px</li>
+        <li>Redesign the on-screen answer popup (`notify.py`) — by far the most</li>
+        <li>Fix a startup crash (`TclError: invalid boolean operator in tag search</li>
+        <li>Fix the new gradient header&#x27;s layout: the logo is now pinned to the</li>
+        <li>Fix the logo sitting noticeably further from the header&#x27;s left edge</li>
+        <li>Fix a visible color seam around the header&#x27;s gear button: `CTkButton`</li>
+        <li>Give the Start/Save buttons (and every ttk `Accent.TButton`) white</li>
+        <li>Drop `-topmost` from every dialog (Setup, Configuration, QR linking,</li>
+        <li>Give the header&#x27;s logo/gear more room to breathe — the margin was</li>
+        <li>Merge the Setup dialog&#x27;s Question and Model cards into one (&quot;Question</li>
+        <li>Fix the header&#x27;s gear button still sitting closer to the corner than</li>
+        <li>Attempted a fix for harmless-but-noisy `invalid command name ... (after</li>
+        <li>Add a one-time console warning if what `mss` actually captures doesn&#x27;t</li>
+        <li>Trim vertical space in the Setup dialog&#x27;s cards: the two Notifications</li>
+        <li>Fix the tray icon&#x27;s Status dialog (and the QR-linking dialog) showing</li>
+        <li>Fix the taskbar (not titlebar) icon still showing generic even where</li>
+        <li>Add `create-local-cert.ps1`: one-command local setup (create a</li>
+      </ul>
+
       <h2>v0.0.2-beta — 2026-08-03</h2>
       <p>`.env`/`usage_stats.json`/`snapshots\` from what gets packaged,</p>
       <p>regardless of what&#x27;s sitting in the build folder at build time.</p>
