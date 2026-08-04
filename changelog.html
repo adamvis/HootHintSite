@@ -31,6 +31,15 @@
       <p class="subtitle">See the <a href="https://github.com/adamvis/HootHintSite/releases">Releases page</a> for downloadable installers of every version.</p>
 
       <!-- LATEST_RELEASE -->
+      <h2>v0.0.4-beta — 2026-08-04</h2>
+      <p>credentials configured when launched as the installer&#x27;s own &quot;Launch</p>
+      <p>now&quot; step: the setup check and config dialog now only ever trust what&#x27;s</p>
+      <p>actually saved in this install&#x27;s `.env` file, never an ambient</p>
+      <p>environment variable inherited from whatever process launched it.</p>
+      <ul>
+        <li>Fix a fresh install appearing to already have a Gemini API key/Telegram</li>
+      </ul>
+
       <h2>v0.0.3-beta — 2026-08-04</h2>
       <p>could survive an uninstall and reappear on reinstall into the same</p>
       <p>folder — not a packaging leak, just a missed cleanup).</p>
